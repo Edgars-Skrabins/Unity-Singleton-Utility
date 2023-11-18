@@ -4,17 +4,17 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     [SerializeField] private bool m_dontDestroyOnLoad;
 
-    public static T I { get; }
+    public static T I { get; private set;}
 
     protected virtual void Awake()
     {
-        if (i == null)
+        if (I == null)
         {
-            i = this as T;
+            I = this as T;
             if (m_dontDestroyOnLoad)
                 DontDestroyOnLoad(gameObject);
         }
-        else if (i != null && i != this)
+        else if (I != null && I != this)
         {
             Debug.LogError("There's more than one singleton " + gameObject.name + " of type " + GetType());
             Destroy(gameObject);
