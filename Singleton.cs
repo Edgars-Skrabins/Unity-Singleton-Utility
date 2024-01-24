@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    [SerializeField] private bool m_dontDestroyOnLoad;
-
     public static T I { get; private set;}
+    
+    [SerializeField] private bool m_dontDestroyOnLoad;
 
     protected virtual void Awake()
     {
